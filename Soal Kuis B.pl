@@ -1,0 +1,33 @@
+ortu_anak(anto, ita).
+ortu_anak(anto, budi).
+ortu_anak(anto, ida).
+ortu_anak(wati, ita).
+ortu_anak(wati, budi).
+ortu_anak(wati, ida).
+ortu_anak(deni, hadi).
+ortu_anak(ita, hadi).
+ortu_anak(budi, dina).
+ortu_anak(ida, andi).
+ortu_anak(ida, rita).
+ortu_anak(rudi, andi).
+ortu_anak(rudi, rita).
+laki_laki(anto).
+laki_laki(budi).
+laki_laki(rudi).
+laki_laki(andi).
+laki_laki(hadi).
+laki_laki(deni).
+perempuan(wati).
+perempuan(ita).
+perempuan(ida).
+perempuan(dina).
+perempuan(rita).
+
+sesaudara(X, Y):- ortu_anak(Z, X), ortu_anak(Z, Y), laki_laki(Z).
+kakek_cucu(X, Z):- ortu_anak(X, Y), ortu_anak(Y, Z), laki_laki(X).
+nenek_cucu(X, Z):- ortu_anak(X, Y), ortu_anak(Y, Z), perempuan(X).
+paman_ponakan(X, Z):- ortu_anak(Y, Z), sesaudara(X, Y), laki_laki(X), not(ortu_anak(X, Z)).
+bibi_ponakan(X, Z):- ortu_anak(Y, Z), sesaudara(X, Y), perempuan(X), not(ortu_anak(X, Z)).
+
+
+
